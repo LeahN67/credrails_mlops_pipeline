@@ -62,7 +62,7 @@ jobs:
         test -f model_outputs/confusion_matrix.png
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: model-artifacts
         path: model_outputs/
