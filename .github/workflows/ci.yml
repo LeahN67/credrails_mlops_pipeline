@@ -6,14 +6,27 @@ on:
   pull_request:
     branches: [ master ]
 
+# Add permissions for actions
+permissions:
+  contents: read
+  actions: write
+
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
+    
+    # Add permissions for this job
+    permissions:
+      contents: read
+      actions: write
+      packages: read
+      id-token: write
+
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3  # Updated to v3
     
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4  # Updated to v4
       with:
         python-version: '3.8'
     
@@ -42,7 +55,7 @@ jobs:
         test -f model_outputs/confusion_matrix.png
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2  # Fixed: Correct action name is upload-artifact (singular)
+      uses: actions/upload-artifact@v3  # Updated to v3
       with:
         name: model-artifacts
         path: model_outputs/
