@@ -62,7 +62,7 @@ jobs:
         test -f model_outputs/confusion_matrix.png
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb  # Stable commit SHA for v3
       with:
         name: model-artifacts
         path: model_outputs/
